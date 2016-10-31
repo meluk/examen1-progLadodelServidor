@@ -17,13 +17,13 @@ app.use(bodyParser.json());
 
 var smtpTransport = nodemailer.createTransport('smtps://ladoservidor2016%40gmail.com:ladosrv2016@smtp.gmail.com');
 
-// routes ==============================================================
- app.get('/send',function(req,res){
+
+function sendEmail(text){
 
     var mailOptions={
         from: '"usuario" <ladoservidor2016@gmail.com>',
-        to : req.query.to,
-        subject : req.query.subject,
+        to : 'kmelisu@gmail.com',//correo al que llega
+        subject : 'usuario',
         text : req.query.text
     }
     console.log(mailOptions);
@@ -36,7 +36,20 @@ var smtpTransport = nodemailer.createTransport('smtps://ladoservidor2016%40gmail
         res.end("sent");
          }
 });
+
+}
+
+
+
+// routes ==============================================================
+ app.get('/send',function(req,res){
+
+    sendEmail(req.body);    
+  
 });
+
+
+  
 
 
 

@@ -1,3 +1,5 @@
+ ***Verificcar  en mailOptions el to , alcual se envia el correo.
+
 Funciones:
 app.get:
   carga la pagina inicial
@@ -9,3 +11,6 @@ app.get:
 
 ("#send_email").click(function:
 Activa el boton al dar click, toma los datos del form y lo envia por un get al servidor
+
+function sendEmai:
+toma el texto , lo parsea y lo envia el correo

@@ -9,7 +9,8 @@ $(document).ready(function(){
         proyectoRed = 0,
         proyectoSeñalización = 0,
         donaFiesta = 0,
-        donaAyuda = 0;
+        donaAyuda = 0,
+        textForm;
 
 
     $("#send_email").click(function(){  
@@ -20,22 +21,24 @@ $(document).ready(function(){
         donaFiesta  =$("#donaFiesta").val();
         donaAyuda =$("#donaAyuda").val();
 
-        console.log(TipoCobro+proyectoCamaras+proyectoRed+proyectoSeñalización+donaFiesta+donaAyuda);
+        //console.log(TipoCobro+proyectoCamaras+proyectoRed+proyectoSeñalización+donaFiesta+donaAyuda);
         if (proyectoCamaras !== null && proyectoCamaras >= 5000) {
 
-          var text =+'<p>TipoCobro'+TipoCobro +'</p>'
-              +'<p>TipoCobro'+ proyectoCamaras +'</p>'
-              +'<p>TipoCobro'+ proyectoRed +'</p>'
-              +'<p>TipoCobro'+ proyectoSeñalización +'</p>'
-              +'<p>TipoCobro'+ donaFiesta +'</p>'
-              +'<p>TipoCobro'+ donaAyuda +'</p>';
-               console.log(text)
+          textForm = {'TipoCobro': TipoCobro,
+                  'proyectoCamaras': proyectoCamaras,
+                   'proyectoRed': proyectoRed,
+                        'proyectoSeñalización':proyectoSeñalización,
+                        'donaFiesta': donaFiesta,
+                        'donaAyuda': donaAyuda 
+               };
+
+               console.log(textForm);
           
              $("#message").text("Sending E-mail...Please wait");
-        $.get("http://localhost:3000/send",{text:text},function(data){
+        $.get("http://localhost:8080/send",{textForm},function(data){
         if(data=="sent")
         {
-            $("#message").empty().html("Email is been sent at "+to+" . Please check inbox !");
+            $("#message").empty().html("Email is been sent  . Please check inbox !");
         }
 
 })
