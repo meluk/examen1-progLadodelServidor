@@ -1,0 +1,126 @@
+<html>
+<head>
+<title>Node.JS Email application</title>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    var TipoCobro = 0,
+        proyectoCamaras = null,
+        proyectoRed = 0,
+        proyectoSeñalización = 0,
+        donaFiesta = 0,
+        donaAyuda = 0;
+
+
+    $("#send_email").click(function(){  
+        TipoCobro =$("#TipoCobro").val();
+        proyectoCamaras =$("#proyectoCamaras").val();
+        proyectoRed =$("#proyectoRed").val();
+        proyectoSeñalización =$("#proyectoSeñalización").val();
+        donaFiesta  =$("#donaFiesta").val();
+        donaAyuda =$("#donaAyuda").val();
+
+        console.log(TipoCobro+proyectoCamaras+proyectoRed+proyectoSeñalización+donaFiesta+donaAyuda);
+        if (proyectoCamaras !== null && proyectoCamaras >= 5000) {
+
+          var text =+'<p>TipoCobro'+TipoCobro +'</p>'
+              +'<p>TipoCobro'+ proyectoCamaras +'</p>'
+              +'<p>TipoCobro'+ proyectoRed +'</p>'
+              +'<p>TipoCobro'+ proyectoSeñalización +'</p>'
+              +'<p>TipoCobro'+ donaFiesta +'</p>'
+              +'<p>TipoCobro'+ donaAyuda +'</p>';
+               console.log(text)
+          
+             $("#message").text("Sending E-mail...Please wait");
+        $.get("http://localhost:3000/send",{text:text},function(data){
+        if(data=="sent")
+        {
+            $("#message").empty().html("Email is been sent at "+to+" . Please check inbox !");
+        }
+
+})
+
+        }else{
+          $("#message").text("El Proyecto de Camaras debe ser mayoar a 5000");
+        };
+
+        
+        });
+
+      
+
+});
+</script>
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+</head>
+<body>
+
+
+
+    <div class="container">
+   <h1>Envio de pago</h1>
+
+   <div class="form-group row">
+      <label for="example-text-input" class="col-xs-2 col-form-label">Tipo de Cobro</label>
+      <div class="col-xs-10">
+         <select class="form-control" id="TipoCobro">
+          <option value="0">Ninguno</option>
+          <option value="¢35.000">Regular</option>
+          <option value="¢45.000">Extraordinario</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="example-text-input" class="col-xs-2 col-form-label">Proyecto Cámaras</label>
+      <div class="col-xs-10">
+        <input class="form-control" type="number"  id="proyectoCamaras">
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="example-number-input" class="col-xs-2 col-form-label">Proyecto Red inalámbrica</label>
+      <div class="col-xs-10">
+        <input class="form-control" type="number"  id="proyectoRed">
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="example-number-input" class="col-xs-2 col-form-label">Proyecto Señalización de las calles internas.</label>
+      <div class="col-xs-10">
+        <input class="form-control" type="number"  id="proyectoSeñalización">
+      </div>
+    </div>
+
+
+    <div class="form-group row">
+      <label for="example-number-input" class="col-xs-2 col-form-label">Donación Fiesta de niños de la comunidad</label>
+      <div class="col-xs-10">
+        <input class="form-control" type="number"  id="donaFiesta">
+      </div>
+    </div>
+
+
+    <div class="form-group row">
+      <label for="example-number-input" class="col-xs-2 col-form-label">Donación Ayuda a vecino.</label>
+      <div class="col-xs-10">
+        <input class="form-control" type="number"  id="donaAyuda">
+      </div>
+    </div>
+
+<button id="send_email">Send Email</button>
+<span id="message"></span>
+
+</div>
+
+
+
+</div>
+</div>
+</body>
+</html>
+

@@ -1,0 +1,35 @@
+/* Basic reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  
+}
+
+/* A nice BG gradient */
+html {
+  height: 100%;
+}
+body { margin:0; 
+  padding:0 40px; 
+ 
+}
+#map {
+    top: 0;
+    bottom: 0;
+    height: 450px;
+    padding-top: 23px;
+    padding-left: 20px;
+    /*margin-top: 580px;*/
+}
+
+label {
+    display: inline-block;
+    max-width: 100%;
+    margin-bottom: 5px;
+    font-weight: 400;
+    font-size: 18px;;
+}
+
+
+

@@ -1,0 +1,11 @@
+Funciones:
+app.get:
+  carga la pagina inicial
+
+  app.get('/send',function(req,res)
+  cuando envio atravez de jquery el url con la palabra send
+  el ejecuta es funcion
+
+
+("#send_email").click(function:
+Activa el boton al dar click, toma los datos del form y lo envia por un get al servidor
